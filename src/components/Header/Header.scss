@@ -1,0 +1,32 @@
+@import "../../sass/variables";
+@import "../../sass/mixins";
+@import "../../sass/base";
+
+.main-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 1rem;
+
+  &-logo-image {
+    height: 80px;
+    object-fit: cover;
+  }
+
+  &-h1 {
+    font-size: 36px;
+    color: darken($color-4, 7);
+  }
+
+  .button {
+    background-color: $color-4;
+    color: $color-2;
+    padding: 0.7rem;
+    border-radius: 5px;
+    font-family: roboto;
+    span {
+      margin-left: 0.6rem;
+    }
+  }
+}
