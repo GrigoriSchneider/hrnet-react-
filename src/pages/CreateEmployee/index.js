@@ -3,16 +3,18 @@ import { useForm, Controller } from "react-hook-form";
 
 import "./CreateEmployee.scss";
 import { states } from "../../datas/states";
+import { useDispatch } from "react-redux";
+import { createEmployee } from "../../store/slices/employeeSlice";
 
 const CreateEmployee = () => {
-  const [newEmployee, setNewEmployee] = useState({});
+  const dispatch = useDispatch();
 
   // useForm()
   const { register, formState, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
+    dispatch(createEmployee(data));
     console.log(data);
-    console.log(states[0]);
   };
 
   return (
@@ -23,7 +25,7 @@ const CreateEmployee = () => {
         {/* person */}
         <section>
           <div className="input-wrapper">
-            <label htmlFor="firstname">Firstname</label>
+            <label htmlFor="firstname">Firstname :</label>
             <input
               type="text"
               id="firstname"
@@ -35,7 +37,7 @@ const CreateEmployee = () => {
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="lastname">Lastname</label>
+            <label htmlFor="lastname">Lastname :</label>
             <input
               type="text"
               id="lastname"
@@ -47,11 +49,11 @@ const CreateEmployee = () => {
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="lastname">Birthday</label>
+            <label htmlFor="birthday">Birthday :</label>
             <input
               type="date"
-              placeholder="birthday"
-              {...register("Date of Birth", {})}
+              id="birthday"
+              {...register("birthday", { required: true })}
             />
             {formState.errors.birthday && (
               <p style={{ color: "red" }}>Birthday is required</p>
@@ -59,11 +61,11 @@ const CreateEmployee = () => {
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="lastname">Start date</label>
+            <label htmlFor="startdate">Start date :</label>
             <input
               type="date"
-              placeholder="startdate"
-              {...register("Start Date", {})}
+              id="startdate"
+              {...register("startdate", { required: true })}
             />
             {formState.errors.startdate && (
               <p style={{ color: "red" }}>Start date is required</p>
@@ -76,7 +78,7 @@ const CreateEmployee = () => {
           <h3>Address</h3>
 
           <div className="input-wrapper">
-            <label htmlFor="street">Street</label>
+            <label htmlFor="street">Street :</label>
             <input
               type="text"
               id="street"
@@ -88,7 +90,7 @@ const CreateEmployee = () => {
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="city">City</label>
+            <label htmlFor="city">City :</label>
             <input
               type="text"
               id="city"
@@ -99,26 +101,46 @@ const CreateEmployee = () => {
             )}
           </div>
 
-          <select placeholder="Alabama" {...register("state")} id="state">
-            {states.map((state, i) => (
-              <option value={state.name} key={i}>
-                {state.name}
-              </option>
-            ))}
-          </select>
+          <div className="input-wrapper">
+            <label htmlFor="state">State :</label>
+            <select placeholder="Alabama" {...register("state")} id="state">
+              {states.map((state, i) => (
+                <option value={state.name} key={i}>
+                  {state.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="input-wrapper">
+            <label htmlFor="zipcode">Zipcode :</label>
+            <input
+              type="number"
+              id="zipcode"
+              {...register("zipcode", { required: true })}
+            />
+            {formState.errors.zipcode && (
+              <p style={{ color: "red" }}>Zipcode is required</p>
+            )}
+          </div>
         </section>
 
-        <div className="input-wrapper">
-          <label htmlFor="zipcode">zipcode</label>
-          <input
-            type="number"
-            id="zipcode"
-            {...register("zipcode", { required: true })}
-          />
-          {formState.errors.zipcode && (
-            <p style={{ color: "red" }}>zipcode is required</p>
-          )}
-        </div>
+        <section>
+          <div className="input-wrapper">
+            <label htmlFor="department">Department</label>
+            <select
+              placeholder="Sales"
+              {...register("department")}
+              id="department"
+            >
+              <option>Sales</option>
+              <option>Marketing</option>
+              <option>Engineering</option>
+              <option>Human Resources</option>
+              <option>Legal</option>
+            </select>
+          </div>
+        </section>
 
         <button type="submit" className="sign-in-button">
           Create Employee
