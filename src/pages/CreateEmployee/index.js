@@ -25,49 +25,49 @@ const CreateEmployee = () => {
         {/* person */}
         <section>
           <div className="input-wrapper">
-            <label htmlFor="firstname">Firstname :</label>
+            <label htmlFor="firstName">Firstname :</label>
             <input
               type="text"
-              id="firstname"
-              {...register("firstname", { required: true })}
+              id="firstName"
+              {...register("firstName", { required: true })}
             />
-            {formState.errors.firstname && (
+            {formState.errors.firstName && (
               <p style={{ color: "red" }}>Firstname is required</p>
             )}
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="lastname">Lastname :</label>
+            <label htmlFor="lastName">Lastname :</label>
             <input
               type="text"
-              id="lastname"
-              {...register("lastname", { required: true })}
+              id="lastName"
+              {...register("lastName", { required: true })}
             />
-            {formState.errors.firstname && (
+            {formState.errors.lastName && (
               <p style={{ color: "red" }}>Lastname is required</p>
             )}
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="birthday">Birthday :</label>
+            <label htmlFor="dateOfBirth">Birthday :</label>
             <input
               type="date"
-              id="birthday"
-              {...register("birthday", { required: true })}
+              id="dateOfBirth"
+              {...register("dateOfBirth", { required: true })}
             />
-            {formState.errors.birthday && (
+            {formState.errors.dateOfBirth && (
               <p style={{ color: "red" }}>Birthday is required</p>
             )}
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="startdate">Start date :</label>
+            <label htmlFor="startDate">Start date :</label>
             <input
               type="date"
-              id="startdate"
-              {...register("startdate", { required: true })}
+              id="startDate"
+              {...register("startDate", { required: true })}
             />
-            {formState.errors.startdate && (
+            {formState.errors.startDate && (
               <p style={{ color: "red" }}>Start date is required</p>
             )}
           </div>
@@ -113,13 +113,13 @@ const CreateEmployee = () => {
           </div>
 
           <div className="input-wrapper">
-            <label htmlFor="zipcode">Zipcode :</label>
+            <label htmlFor="zipCode">Zipcode :</label>
             <input
               type="number"
-              id="zipcode"
-              {...register("zipcode", { required: true })}
+              id="zipCode"
+              {...register("zipCode", { required: true })}
             />
-            {formState.errors.zipcode && (
+            {formState.errors.zipCode && (
               <p style={{ color: "red" }}>Zipcode is required</p>
             )}
           </div>
