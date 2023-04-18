@@ -10,11 +10,12 @@ const CreateEmployee = () => {
   const dispatch = useDispatch();
 
   // useForm()
-  const { register, formState, handleSubmit } = useForm();
+  const { register, formState, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     dispatch(createEmployee(data));
     console.log(data);
+    reset();
   };
 
   return (

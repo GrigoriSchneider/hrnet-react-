@@ -7,22 +7,26 @@ import {
   usePagination,
 } from "react-table";
 import GlobalFilter from "../GlobalFilter/globalFilter";
+import { useSelector } from "react-redux";
 
 const MockEmployees = () => {
-  const [employees, setEmployees] = useState([]);
+  const createdEmployees = useSelector((state) => state.employeeList.employees);
 
-  const fetchEmployees = async () => {
-    const response = await axios
-      .get("./MockEmployees.json")
-      .catch((err) => console.log(err));
+  console.log(createdEmployees);
+  const [employees, setEmployees] = useState(createdEmployees);
 
-    if (response) {
-      const employees = response.data;
+  // const fetchEmployees = async () => {
+  //   const response = await axios
+  //     .get("./MockEmployees.json")
+  //     .catch((err) => console.log(err));
 
-      //   console.log("Employees: ", employees);
-      setEmployees(employees);
-    }
-  };
+  //   if (response) {
+  //     const employees = response.data;
+
+  //     //   console.log("Employees: ", employees);
+  //     setEmployees(employees);
+  //   }
+  // };
 
   const data = useMemo(
     () => [
@@ -122,7 +126,6 @@ const MockEmployees = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
     preGlobalFilteredRows,
     setGlobalFilter,
@@ -141,7 +144,7 @@ const MockEmployees = () => {
   } = tableInstance;
 
   useEffect(() => {
-    fetchEmployees();
+    // fetchEmployees();
   }, []);
 
   const isEven = (idx) => idx % 2 === 0;
