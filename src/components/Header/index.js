@@ -1,8 +1,9 @@
 import React from "react";
+import styled from "styled-components";
 
 import logo from "./logo.png";
 import { Link, useLocation } from "react-router-dom";
-import "./Header.scss";
+// import "./Header.scss";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 // import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -15,11 +16,11 @@ const Header = () => {
   console.log(location.pathname);
 
   return (
-    <nav className="main-nav">
+    <Nav>
       <Link to="/">
-        <img className="main-nav-logo-image" src={logo} alt="logo" />
+        <img src={logo} alt="logo" />
       </Link>
-      <h1 className="main-nav-h1">HRnet</h1>
+      <h1>HRnet</h1>
 
       {location.pathname === "/employeelist" ? (
         <Link to="/" className="button">
@@ -32,8 +33,38 @@ const Header = () => {
           <span>Employee List</span>
         </Link>
       )}
-    </nav>
+    </Nav>
   );
 };
 
 export default Header;
+
+const Nav = styled.nav`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 1rem;
+  background-color: white;
+
+  img {
+    height: 80px;
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 36px;
+    color: #6d7e1e;
+  }
+
+  .button {
+    background-color: #6d7e1e;
+    color: #ffffff;
+    padding: 0.7rem;
+    border-radius: 5px;
+    font-family: roboto;
+    span {
+      margin-left: 0.6rem;
+    }
+  }
+`;
