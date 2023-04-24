@@ -58,7 +58,8 @@ const Nav = styled.nav`
     color: #ffffff;
     padding: 0.7rem;
     border-radius: 5px;
-    font-family: roboto;
+    font-family: "Montserrat", "Roboto", sans-serif;
+    font-size: 18px;
     span {
       margin-left: 0.6rem;
     }

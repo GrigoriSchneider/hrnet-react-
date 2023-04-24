@@ -42,6 +42,10 @@ const Search = styled.div`
   flex-direction: column;
   margin: 0.5rem;
 
+  h2 {
+    font-size: 25px;
+  }
+
   input {
     background-color: white;
     font-family: "Montserrat", "Roboto", sans-serif;
