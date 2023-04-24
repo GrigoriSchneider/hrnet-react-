@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./logo-small.png";
 import { Link } from "react-router-dom";
-// import "./Footer.scss";
 import styled from "styled-components";
 
 const index = () => {

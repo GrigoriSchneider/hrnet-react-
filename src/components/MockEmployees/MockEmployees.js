@@ -8,6 +8,7 @@ import {
 } from "react-table";
 import GlobalFilter from "../GlobalFilter/globalFilter";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 
 const MockEmployees = () => {
   const createdEmployees = useSelector((state) => state.employeeList.employees);
@@ -75,7 +76,7 @@ const MockEmployees = () => {
         // globalFilter={state.globalFilter}
         gotoPage
       />
-      <table {...getTableProps()}>
+      <Table {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup, i) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -110,41 +111,105 @@ const MockEmployees = () => {
             );
           })}
         </tbody>
-      </table>
-      <div className="pagination">
-        <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {"<<"}
-        </button>{" "}
-        <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {"<"}
-        </button>{" "}
-        <button onClick={() => nextPage()} disabled={!canNextPage}>
-          {">"}
-        </button>{" "}
-        <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {">>"}
-        </button>{" "}
-        <span>
+      </Table>
+
+      <Pagination>
+        <div>
+          <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+            {"<<"}
+          </button>{" "}
+          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+            {"<"}
+          </button>{" "}
+          <button onClick={() => nextPage()} disabled={!canNextPage}>
+            {">"}
+          </button>{" "}
+          <button
+            onClick={() => gotoPage(pageCount - 1)}
+            disabled={!canNextPage}
+          >
+            {">>"}
+          </button>{" "}
+        </div>
+        {/* Pages */}
+        <div>
           Page{" "}
           <strong>
             {pageIndex + 1} of {pageOptions.length}
           </strong>{" "}
-        </span>
-        <select
-          value={pageSize}
-          onChange={(e) => {
-            setPageSize(Number(e.target.value));
-          }}
-        >
-          {[10, 20, 30, 40, 50].map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
-            </option>
-          ))}
-        </select>
-      </div>
+        </div>
+        {/* Select */}
+        <div>
+          <select
+            value={pageSize}
+            onChange={(e) => {
+              setPageSize(Number(e.target.value));
+            }}
+          >
+            {[10, 20, 30, 40, 50].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                Show {pageSize}
+              </option>
+            ))}
+          </select>
+        </div>
+      </Pagination>
     </>
   );
 };
 
 export default MockEmployees;
+
+const Table = styled.table`
+  font-family: "Montserrat", "Roboto", sans-serif;
+  border-collapse: collapse;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  max-height: 400px;
+  overflow: scroll;
+  max-width: 1400px;
+  margin: auto;
+  margin-bottom: 1rem;
+
+  tr:nth-child(even) {
+    background-color: #c4d961;
+  }
+  tr:hover {
+    background-color: #6d7e1e;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #62711b;
+    color: #fff;
+    height: 25px;
+    padding: 0.35rem;
+  }
+
+  td {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 20px;
+  }
+`;
+
+const Pagination = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: auto;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: 500px;
+  border-top: none;
+  padding: 2px;
+
+  button {
+    padding-top: 3px;
+    padding: 0.35rem;
+  }
+`;

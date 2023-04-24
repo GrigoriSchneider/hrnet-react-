@@ -3,10 +3,6 @@ import styled from "styled-components";
 
 import logo from "./logo.png";
 import { Link, useLocation } from "react-router-dom";
-// import "./Header.scss";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-// import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faUserPlus } from "@fortawesome/free-solid-svg-icons";
