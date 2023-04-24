@@ -201,12 +201,18 @@ const Pagination = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  font-family: "Montserrat", "Roboto", sans-serif;
+
   margin: auto;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: 500px;
   border-top: none;
   padding: 2px;
+
+  select {
+    font-family: "Montserrat", "Roboto", sans-serif;
+  }
 
   button {
     padding-top: 3px;

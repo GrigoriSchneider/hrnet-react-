@@ -26,6 +26,8 @@ const Footer = styled.div`
   font-size: 14px;
   margin-top: 2rem;
   background-color: white;
+  color: #62711b;
+  font-family: "Montserrat", "Roboto", sans-serif;
 
   img {
     height: 35px;

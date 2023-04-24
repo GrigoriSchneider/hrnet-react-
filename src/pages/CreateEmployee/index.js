@@ -47,9 +47,6 @@ const CreateEmployee = () => {
                 // onSetInput(e.target.value);
               }}
             />
-            {formState.errors.firstName && (
-              <p style={{ color: "red" }}>Firstname is required</p>
-            )}
           </Wrapper>
 
           <Wrapper>
@@ -60,9 +57,6 @@ const CreateEmployee = () => {
               id="lastName"
               {...register("lastName", { required: true })}
             />
-            {formState.errors.lastName && (
-              <p style={{ color: "red" }}>Lastname is required</p>
-            )}
           </Wrapper>
 
           <Wrapper>
@@ -73,9 +67,6 @@ const CreateEmployee = () => {
               id="dateOfBirth"
               {...register("dateOfBirth", { required: true })}
             />
-            {formState.errors.dateOfBirth && (
-              <p style={{ color: "red" }}>Birthday is required</p>
-            )}
           </Wrapper>
 
           <Wrapper>
@@ -86,9 +77,6 @@ const CreateEmployee = () => {
               id="startDate"
               {...register("startDate", { required: true })}
             />
-            {formState.errors.startDate && (
-              <p style={{ color: "red" }}>Start date is required</p>
-            )}
           </Wrapper>
         </section>
 
@@ -102,9 +90,6 @@ const CreateEmployee = () => {
               id="street"
               {...register("street", { required: true })}
             />
-            {formState.errors.street && (
-              <p style={{ color: "red" }}>Street is required</p>
-            )}
           </Wrapper>
 
           <Wrapper>
@@ -115,9 +100,6 @@ const CreateEmployee = () => {
               id="city"
               {...register("city", { required: true })}
             />
-            {formState.errors.city && (
-              <p style={{ color: "red" }}>City is required</p>
-            )}
           </Wrapper>
 
           <Wrapper>
@@ -139,9 +121,6 @@ const CreateEmployee = () => {
               id="zipCode"
               {...register("zipCode", { required: true })}
             />
-            {formState.errors.zipCode && (
-              <p style={{ color: "red" }}>Zipcode is required</p>
-            )}
           </Wrapper>
         </section>
 
@@ -200,6 +179,7 @@ const Employee = styled.div`
   }
 
   button {
+    margin-top: 1rem;
     background-color: #6d7e1e;
     color: #ffffff;
     padding: 0.7rem;
