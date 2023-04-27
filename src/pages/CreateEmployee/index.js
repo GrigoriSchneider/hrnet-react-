@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 import { states } from "../../datas/states";
+import { department } from "../../datas/department";
 import { useDispatch } from "react-redux";
 import { createEmployee } from "../../store/slices/employeeSlice";
 import { Modal } from "hrnet-react-modal-component";
 import { redirect } from "react-router-dom";
 import styled from "styled-components";
+import InputBlueprint from "../../components/InputBlueprint/InputBlueprint";
 
 const CreateEmployee = () => {
   const dispatch = useDispatch();
@@ -15,17 +17,20 @@ const CreateEmployee = () => {
   const [value, setValue] = useState("");
 
   // useForm()
-  const { register, formState, handleSubmit, reset } = useForm();
+  const { register, formState, handleSubmit, reset } = useForm({
+    defaultValues: {
+      startDate: null,
+      dateOfBirth: null,
+    },
+  });
 
   const toggleModal = () => setModalSwitch(!modalSwitch);
 
   const onSubmit = (data) => {
     dispatch(createEmployee(data));
-    console.log(data);
     toggleModal();
     setFirstNameValue("");
-    // reset();
-    // redirect("/employeelist");
+    reset();
   };
 
   return (
@@ -36,46 +41,42 @@ const CreateEmployee = () => {
         {/* person */}
         <section>
           <Wrapper>
-            <label htmlFor="firstName">Firstname :</label>
-            <input
-              value={firstNameValue}
-              type="text"
-              id="firstName"
-              {...register("firstName", { required: true })}
-              onInput={(e) => {
-                setFirstNameValue(e.target.value);
-                // onSetInput(e.target.value);
-              }}
+            <InputBlueprint
+              label="Firstname"
+              name="firstName"
+              inputType="input"
+              formState={formState}
+              register={register("firstName", { required: true })}
             />
           </Wrapper>
 
           <Wrapper>
-            <label htmlFor="lastName">Lastname :</label>
-            <input
-              // value={value}
-              type="text"
-              id="lastName"
-              {...register("lastName", { required: true })}
+            <InputBlueprint
+              label="Lastname"
+              name="lastName"
+              inputType="input"
+              formState={formState}
+              register={register("lastName", { required: true })}
             />
           </Wrapper>
 
           <Wrapper>
-            <label htmlFor="dateOfBirth">Birthday :</label>
-            <input
-              // value={value}
-              type="date"
-              id="dateOfBirth"
-              {...register("dateOfBirth", { required: true })}
+            <InputBlueprint
+              label="Birthday"
+              name="dateOfBirth"
+              inputType="date"
+              formState={formState}
+              register={register("dateOfBirth", { required: true })}
             />
           </Wrapper>
 
           <Wrapper>
-            <label htmlFor="startDate">Start date :</label>
-            <input
-              // value={value}
-              type="date"
-              id="startDate"
-              {...register("startDate", { required: true })}
+            <InputBlueprint
+              label="Start date"
+              name="startDate"
+              inputType="date"
+              formState={formState}
+              register={register("startDate", { required: true })}
             />
           </Wrapper>
         </section>
@@ -83,61 +84,57 @@ const CreateEmployee = () => {
         {/* address */}
         <section>
           <Wrapper>
-            <label htmlFor="street">Street :</label>
-            <input
-              // value={value}
-              type="text"
-              id="street"
-              {...register("street", { required: true })}
+            <InputBlueprint
+              label="Street"
+              name="street"
+              inputType="input"
+              formState={formState}
+              register={register("street", { required: true })}
             />
           </Wrapper>
 
           <Wrapper>
-            <label htmlFor="city">City :</label>
-            <input
-              // value={value}
-              type="text"
-              id="city"
-              {...register("city", { required: true })}
+            <InputBlueprint
+              label="City"
+              name="city"
+              inputType="input"
+              formState={formState}
+              register={register("city", { required: true })}
             />
           </Wrapper>
 
           <Wrapper>
-            <label htmlFor="state">State :</label>
-            <select placeholder="Alabama" {...register("state")} id="state">
-              {states.map((state, i) => (
-                <option value={state.name} key={i}>
-                  {state.name}
-                </option>
-              ))}
-            </select>
+            <InputBlueprint
+              label="State"
+              name="state"
+              options={states}
+              inputType="select"
+              formState={formState}
+              register={register("state")}
+            />
           </Wrapper>
 
           <Wrapper>
-            <label htmlFor="zipCode">Zipcode :</label>
-            <input
-              // value={value}
-              type="number"
-              id="zipCode"
-              {...register("zipCode", { required: true })}
+            <InputBlueprint
+              label="Zipcode"
+              name="zipcode"
+              inputType="number"
+              formState={formState}
+              register={register("zipCode", { required: true })}
             />
           </Wrapper>
         </section>
 
         <section>
           <Wrapper>
-            <label htmlFor="department">Department</label>
-            <select
-              placeholder="Sales"
-              {...register("department")}
-              id="department"
-            >
-              <option>Sales</option>
-              <option>Marketing</option>
-              <option>Engineering</option>
-              <option>Human Resources</option>
-              <option>Legal</option>
-            </select>
+            <InputBlueprint
+              label="Department"
+              name="department"
+              options={department}
+              inputType="select"
+              formState={formState}
+              register={register("department")}
+            />
           </Wrapper>
         </section>
 
@@ -228,5 +225,12 @@ const Wrapper = styled.div`
     &::placeholder {
       color: grey;
     }
+  }
+
+  .invalid {
+    border: 1.5px solid red;
+  }
+  .valid {
+    border: 2px solid #62711b;
   }
 `;

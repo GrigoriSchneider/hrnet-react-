@@ -13,7 +13,6 @@ import styled from "styled-components";
 const MockEmployees = () => {
   const createdEmployees = useSelector((state) => state.employeeList.employees);
 
-  console.log(createdEmployees);
   const [employees, setEmployees] = useState(createdEmployees);
 
   const employeesData = useMemo(() => [...employees], [employees]);
