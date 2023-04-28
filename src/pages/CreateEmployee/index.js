@@ -140,7 +140,9 @@ const CreateEmployee = () => {
 
         <Modal modalStatus={modalSwitch} onConfirm={toggleModal} />
 
-        <button type="submit">Create Employee</button>
+        <button className="button" type="submit">
+          Create Employee
+        </button>
       </form>
     </Employee>
   );
@@ -175,7 +177,7 @@ const Employee = styled.div`
     box-sizing: border-box;
   }
 
-  button {
+  .button {
     margin-top: 1rem;
     background-color: #6d7e1e;
     color: #ffffff;
